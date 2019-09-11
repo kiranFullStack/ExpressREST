@@ -45,18 +45,6 @@ app.get("/:id", (req, res) => {
     .catch(err => console.log(err))
 })
 
-app.delete("/:id", (req, res) => {
-  Courses.findByIdAndDelete(req.params.id)
-    .then(result => res.send(result))
-    .catch(err => console.log(err))
-})
-
-app.patch("/:id", (req, res) => {
-  Courses.findByIdAndUpdate(req.params.id, req.body)
-    .then(result => res.send(result))
-    .catch(err => console.log(err))
-})
-
 app.post("/", (req, res) => {
   //   var course = new Courses({
   //     title: req.body.title,
@@ -70,12 +58,16 @@ app.post("/", (req, res) => {
     .catch(err => console.log(err))
 })
 
-app.get("/courses", (req, res) => {
-  res.send("Hello from server All courses")
+app.patch("/:id", (req, res) => {
+  Courses.findByIdAndUpdate(req.params.id, req.body)
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
 })
 
-app.get("/saved", (req, res) => {
-  res.send("Hello from server saved courses")
+app.delete("/:id", (req, res) => {
+  Courses.findByIdAndDelete(req.params.id)
+    .then(result => res.send(result))
+    .catch(err => console.log(err))
 })
 
 //
