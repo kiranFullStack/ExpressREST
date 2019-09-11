@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
 
 require("dotenv/config")
 
@@ -17,6 +18,8 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
 //
 // ─── MIDDLEWARES ────────────────────────────────────────────────────────────────
 //
+// body-parser
+app.use(bodyParser.json())
 
 app.use("/courses", () => {
   console.log("This is the middleware for the route /")
