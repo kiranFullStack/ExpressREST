@@ -1,6 +1,9 @@
 const express = require("express")
 const mongoose = require("mongoose")
+
 require("dotenv/config")
+
+const Courses = require("./models/Courses")
 
 const app = express()
 
@@ -9,7 +12,7 @@ const app = express()
 //
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => {
-  console.log("Connected to MongoDB🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁")
+  console.log("Connected to MongoDB🥁 🥁 🥁 🥁 🥁 🥁 🥁 🥁 🥁 🥁 🥁")
 })
 //
 // ─── MIDDLEWARES ────────────────────────────────────────────────────────────────
@@ -27,6 +30,10 @@ app.get("/", (req, res) => {
   res.send("Hello from server home")
 })
 
+app.post("/", (req, res) => {
+  console.log(req.body)
+})
+
 app.get("/courses", (req, res) => {
   res.send("Hello from server All courses")
 })
@@ -39,4 +46,6 @@ app.get("/saved", (req, res) => {
 // ─── SERVER LISTENING ───────────────────────────────────────────────────────────
 //
 
-app.listen(8080, () => console.log("Server Running on 8080🚀🚀🚀🚀🚀🚀🚀🚀🚀"))
+app.listen(8080, () =>
+  console.log("Server Running on 8080🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀 🚀")
+)
