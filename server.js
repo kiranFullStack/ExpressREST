@@ -1,7 +1,19 @@
 const express = require("express")
+const mongoose = require("mongoose")
 
 const app = express()
 
+//
+// ─── CONNECT TO DB USING MONGOOSE ────────────────────────────────────────────────────────────────
+//
+
+mongoose.connect(
+  "mongodb+srv://kiran:kiran@devedcluster-ywrkw.mongodb.net/test?retryWrites=true&w=majority",
+  { useNewUrlParser: true },
+  () => {
+    console.log("Connected to MongoDB🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁🥁")
+  }
+)
 //
 // ─── MIDDLEWARES ────────────────────────────────────────────────────────────────
 //
