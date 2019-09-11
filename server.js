@@ -45,18 +45,29 @@ app.get("/:id", (req, res) => {
     .catch(err => console.log(err))
 })
 
-app.post("/", (req, res) => {
-  //   var course = new Courses({
-  //     title: req.body.title,
-  //     level: req.body.level,
-  //     completed: req.body.completed
-  //   })
-  var course = new Courses(req.body)
-  course
-    .save()
-    .then(result => res.send(result))
-    .catch(err => console.log(err))
+app.post("/", async (req, res) => {
+  const course = new Courses(req.body)
+
+  try {
+    const postedCourse = await course.save()
+    res.send(postedCourse)
+  } catch (error) {
+    res.send(error)
+  }
 })
+
+// app.post("/", (req, res) => {
+//   //   var course = new Courses({
+//   //     title: req.body.title,
+//   //     level: req.body.level,
+//   //     completed: req.body.completed
+//   //   })
+//   const course = new Courses(req.body)
+//   course
+//     .save()
+//     .then(result => res.send(result))
+//     .catch(err => console.log(err))
+// })
 
 app.patch("/:id", (req, res) => {
   Courses.findByIdAndUpdate(req.params.id, req.body)
